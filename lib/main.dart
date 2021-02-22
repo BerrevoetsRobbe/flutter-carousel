@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 
@@ -66,7 +64,6 @@ class SlideRollWidget extends StatefulWidget {
 class _SlideRollWidgetState extends State<SlideRollWidget> {
   int _counter;
   List<SlideWidget> _widgets;
-  Timer _timer;
 
   @override
   void initState() {
@@ -81,17 +78,6 @@ class _SlideRollWidgetState extends State<SlideRollWidget> {
           ),
         )
         .toList();
-    _timer = Timer.periodic(Duration(seconds: widget.slideRoll.duration), (timer) {
-      setState(() {
-        _counter = (_counter + 1) % _widgets.length;
-      });
-    });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _timer.cancel();
   }
 
   @override
