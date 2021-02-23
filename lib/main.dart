@@ -99,21 +99,23 @@ class _SlideRollWidgetState extends State<SlideRollWidget> {
     return _widgets.length > 0
         ? Column(
             children: [
-              PageTransitionSwitcher(
-                duration: Duration(milliseconds: 1000),
-                transitionBuilder: (
-                  child,
-                  animation,
-                  secondaryAnimation,
-                ) {
-                  return FadeThroughTransition(
-                    animation: animation,
-                    secondaryAnimation: secondaryAnimation,
-                    child: child,
-                    fillColor: Colors.black,
-                  );
-                },
-                child: _widgets[_counter],
+              Expanded(
+                child: PageTransitionSwitcher(
+                  duration: Duration(milliseconds: 1000),
+                  transitionBuilder: (
+                    child,
+                    animation,
+                    secondaryAnimation,
+                  ) {
+                    return FadeThroughTransition(
+                      animation: animation,
+                      secondaryAnimation: secondaryAnimation,
+                      child: child,
+                      fillColor: Colors.black,
+                    );
+                  },
+                  child: _widgets[_counter],
+                ),
               ),
               ElevatedButton(
                 onPressed: () {
@@ -149,7 +151,6 @@ class SlideWidget extends StatelessWidget {
         slideRollItem.name,
         fit: BoxFit.contain,
       ),
-      height: MediaQuery.of(context).size.height * 0.9,
       width: MediaQuery.of(context).size.width,
     );
   }
